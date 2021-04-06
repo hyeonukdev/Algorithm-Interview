@@ -15,6 +15,7 @@ ex2)
 
 https://leetcode.com/problems/valid-palindrome/
 '''
+import re
 
 def isPalindrome(s):
     strs = []
@@ -29,6 +30,15 @@ def isPalindrome(s):
 
     return True
 
+def isPalindrome_slice(s):
+    s = s.lower()
+    # 정규식으로 문자 필터링
+    # re.sub('패턴', '바꿀문자열', '문자열', 바꿀횟수)
+    s = re.sub('[^a-z0-9]', '', s)
+
+    return s == s[::-1]
+
 # ---------------------------------
 s = "A man, a plan, a canal: Panama"
 print(isPalindrome(s))
+print(isPalindrome_slice(s))
